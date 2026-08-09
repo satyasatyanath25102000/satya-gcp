@@ -1,0 +1,11 @@
+fastapi
+gunicorn
+sqlalchemy
+pg8000
+cloud-sql-python-connector
+google-cloud-secret-manager
+python-jose[cryptography]
+pwdlib[argon2]
+python-multipart
+email-validator
+uvicorn

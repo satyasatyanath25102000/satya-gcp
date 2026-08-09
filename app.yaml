@@ -1,0 +1,9 @@
+runtime: python313
+
+entrypoint: gunicorn -w 2 -k uvicorn.workers.UvicornWorker app.main:app
+
+instance_class: F1
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
