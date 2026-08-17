@@ -9,7 +9,7 @@ steps:
     - '-c'
     - |
       pip install -r app/requirements.txt
-      pytest app/tests/
+      PYTHONPATH=. pytest -v app/tests/
 
 
 # -------------------------
