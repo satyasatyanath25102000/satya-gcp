@@ -19,7 +19,7 @@ steps:
   args:
     - 'build'
     - '-t'
-    - 'us-central1-docker.pkg.dev/${PROJECT_ID}/ai-platform/inference-api:${COMMIT_SHA}'
+    - 'us-central1-docker.pkg.dev/${PROJECT_ID}/ai-platform/inference-api:${SHORT_SHA}'
     - '.'
 
 
@@ -29,7 +29,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - 'push'
-    - 'us-central1-docker.pkg.dev/${PROJECT_ID}/ai-platform/inference-api:${COMMIT_SHA}'
+    - 'us-central1-docker.pkg.dev/${PROJECT_ID}/ai-platform/inference-api:${SHORT_SHA}'
 
 
 # -------------------------
@@ -39,7 +39,7 @@ steps:
   args:
     - 'run'
     - '--filename=k8s/'
-    - '--image=us-central1-docker.pkg.dev/${PROJECT_ID}/ai-platform/inference-api:${COMMIT_SHA}'
+    - '--image=us-central1-docker.pkg.dev/${PROJECT_ID}/ai-platform/inference-api:${SHORT_SHA}'
     - '--cluster=ai-cluster'
     - '--location=us-central1-a'
 options:
