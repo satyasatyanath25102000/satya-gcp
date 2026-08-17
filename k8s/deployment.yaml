@@ -18,8 +18,8 @@ spec:
 
     spec:
       containers:
-        - name: inference-api
-          image: IMAGE_PLACEHOLDER  
+        - name: infereinference-apince-api
+          image:   
 
           ports:
             - containerPort: 8080
