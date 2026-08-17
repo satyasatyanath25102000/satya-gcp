@@ -18,9 +18,8 @@ spec:
 
     spec:
       containers:
-        - name: inference-api
-
-          image: inference-api
+        - name: infereinference-apince-api
+          image:   
 
           ports:
             - containerPort: 8080
