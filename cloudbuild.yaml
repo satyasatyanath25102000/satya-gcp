@@ -42,3 +42,5 @@ steps:
     - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/ai-platform/inference-api:$COMMIT_SHA'
     - '--cluster=ai-cluster'
     - '--location=us-central1'
+options:
+  logging: CLOUD_LOGGING_ONLY
