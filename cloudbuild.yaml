@@ -1,0 +1,44 @@
+steps:
+
+# -------------------------
+# 1. Run tests
+# -------------------------
+- name: 'python:3.11'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      pip install -r app/requirements.txt
+      pytest app/tests/
+
+
+# -------------------------
+# 2. Build Docker image
+# -------------------------
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'build'
+    - '-t'
+    - 'us-central1-docker.pkg.dev/$PROJECT_ID/ai-platform/inference-api:$COMMIT_SHA'
+    - '.'
+
+
+# -------------------------
+# 3. Push Docker image
+# -------------------------
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'push'
+    - 'us-central1-docker.pkg.dev/$PROJECT_ID/ai-platform/inference-api:$COMMIT_SHA'
+
+
+# -------------------------
+# 4. Deploy to GKE
+# -------------------------
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  args:
+    - 'run'
+    - '--filename=k8s/'
+    - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/ai-platform/inference-api:$COMMIT_SHA'
+    - '--cluster=ai-cluster'
+    - '--location=us-central1'
