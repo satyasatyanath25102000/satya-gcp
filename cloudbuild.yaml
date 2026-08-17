@@ -41,6 +41,6 @@ steps:
     - '--filename=k8s/'
     - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/ai-platform/inference-api:$COMMIT_SHA'
     - '--cluster=ai-cluster'
-    - '--location=us-central1'
+    - '--location=us-central1-a'
 options:
   logging: CLOUD_LOGGING_ONLY
